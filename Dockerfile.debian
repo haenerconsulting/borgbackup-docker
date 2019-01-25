@@ -1,0 +1,15 @@
+ARG PY_VERSION=3.7
+ARG DIST=slim
+FROM python:${PY_VERSION}-${DIST}
+ARG VERSION
+ARG BUILD_DATE
+ARG VCS_REF
+ARG GIT_COMMIT=unspecified
+LABEL org.label-schema.version=$VERSION
+LABEL org.label-schema.vcs-ref=$VCS_REF
+LABEL org.label-schema.vcs-url=https://github.com/haenerconsulting/borgbackup
+LABEL org.label-schema.build-date=$BUILD_DATE
+LABEL git_commit=$GIT_COMMIT
+LABEL maintainer="Patrick Haener <contact@haenerconsulting.com>"
+
+RUN apt-get update && apt-get install nfs-common && apt-get install autofs -y && apt-get install borgbackup -y

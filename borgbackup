@@ -1,0 +1,6 @@
+#!/bin/sh
+. ./variables.sh
+
+docker run -it --rm \
+--name borgbackup \
+$IMAGE_NAME
